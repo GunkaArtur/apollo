@@ -1,7 +1,7 @@
 import React from "react";
 import { useQueryAvailablePets } from "./hooks/useQueryAvailablePets";
 
-export const Counter = props => {
+export const Counter = () => {
   const { loading, error, data } = useQueryAvailablePets();
 
   if (loading) {
