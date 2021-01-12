@@ -1,34 +1,19 @@
 import { useMutation } from "@apollo/react-hooks";
 import { loader } from "graphql.macro";
-import { useState } from "react";
+import { useForm } from "../useForm";
 
 const mutationLogin = loader("./gql/mutationLogIn.graphql");
 
 export const useLogin = () => {
-  const [values, setValues] = useState({
-    logIn: {
-      password: "",
-      username: ""
-    }
-  });
   const [logUser, { data, loading, error }] = useMutation(mutationLogin);
-
-  const handleLogin = e => {
-    e.persist();
-    setValues(prevValues => ({
-      logIn: {
-        ...prevValues.logIn,
-        [e.target.name]: e.target.value
-      }
-    }));
-  };
+  const { form, handleChange } = useForm({
+    password: "",
+    username: ""
+  });
 
   const handleSave = () => {
     logUser({
-      variables: {
-        password: values.logIn.password,
-        username: values.logIn.username
-      }
+      variables: form
     });
   };
 
@@ -37,7 +22,7 @@ export const useLogin = () => {
   }
 
   return {
-    handleLogin,
+    handleLogin: handleChange,
     handleSave,
     user: data && data.logIn.customer,
     loading,

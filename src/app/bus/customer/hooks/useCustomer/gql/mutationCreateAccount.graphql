@@ -1,5 +1,5 @@
-mutation createAccount($acc:CreateAccountInput!) {
-    createAccount(input: $acc) {
+mutation createAccount($account:CreateAccountInput!) {
+    createAccount(input: $account) {
         name
     }
 }

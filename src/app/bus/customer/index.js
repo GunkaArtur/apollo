@@ -1,6 +1,6 @@
 import React from "react";
 // import { CustomerList } from "./list";
-// import { CreateCustomer } from "./createCustomer";
+import { CreateCustomer } from "./createCustomer";
 import { Login } from "./login";
 
 export const Customers = () => {
@@ -8,7 +8,7 @@ export const Customers = () => {
     <div>
       <h1>Customer</h1>
       <Login />
-      {/*<CreateCustomer />*/}
+      <CreateCustomer />
       {/*<CustomerList />*/}
     </div>
   );
